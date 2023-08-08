@@ -28,8 +28,7 @@ if (isBuild) {
 }
 
 export default defineConfig({
-  server: { port: SERVER_PORT },
-  site: BASE_URL,
+  site: "https://davidepiu14.github.io",
   base: '/davidepiu14.github.io',
   integrations: [
     sitemap(),

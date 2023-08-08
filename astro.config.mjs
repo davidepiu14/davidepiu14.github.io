@@ -29,7 +29,7 @@ if (isBuild) {
 
 export default defineConfig({
   site: "https://davidepiu14.github.io",
-  base: '/davidepiu14.github.io',
+  base: '/',
   integrations: [
     sitemap(),
     tailwind({

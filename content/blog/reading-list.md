@@ -12,7 +12,8 @@ I will try to publish what I read during the years, miscellaneous tech and non t
 
 ### January
 
-- **Outliers [Malcolm Gladwell]**: (https://www.amazon.com/Outliers-Story-Success-Malcolm-Gladwell/dp/0316017930)   
+- **Outliers [Malcolm Gladwell]**: [Link](https://www.amazon.com/Outliers-Story-Success-Malcolm-Gladwell/dp/0316017930)
+
 
 
 

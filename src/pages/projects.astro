@@ -21,8 +21,8 @@ const sortedProjects = projects
 
 <PageLayout>
   <PageMeta title={`Projects | ${SITE_TITLE}`} slot="meta" />
-  <section slot="main">
-    <ul>
+  <section slot="main" class="mt-6 space-y-6">
+    <ul class="unset space-y-6">
       {
         sortedProjects.map((project) => {
           const formattedDate = new Date(
@@ -33,29 +33,26 @@ const sortedProjects = projects
             day: "numeric",
           });
           return (
-            <li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
-              <div class="title">
-                <a
-                  href={project.frontmatter.url}
-                  target="_blank"
-                  class="unset
-                      transition-[background-size] duration-300 
-                      bg-gradient-to-r bg-left-bottom bg-no-repeat
-                      bg-[length:0%_55%] hover:bg-[length:100%_55%] dark:bg-[length:0%_2px] hover:dark:bg-[length:100%_2px]
-                      from-primary-blue to-primary-blue dark:from-primary-blue dark:to-primary-blue
-                    "
-                >
-                  <span>{project.frontmatter.title}</span>
-                  <span>
-                    <i class="ml-1 mr-1 text-[12px] pb-2 fa-solid fa-up-right-from-square" />
+            <li>
+              <a
+                href={project.frontmatter.url}
+                target="_blank"
+                rel="noreferrer"
+                class="unset block brut-card hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[6px_6px_0_rgba(15,23,42,1)] transition-transform duration-150"
+              >
+                <h2 class="text-xl md:text-2xl font-bold mb-2">
+                  {project.frontmatter.title}
+                  <span class="ml-2 text-xs uppercase tracking-wide align-middle">
+                    <i class="fa-solid fa-up-right-from-square mr-1" />
+                    Project
                   </span>
-                </a>
-              </div>
-              <div class="text-text-muted text-sm italic pt-1">
-                <time datetime={project.frontmatter.date.toISOString()}>
-                  {formattedDate}
-                </time>
-              </div>
+                </h2>
+                <div class="flex items-center justify-between text-xs md:text-sm text-text-muted">
+                  <time datetime={project.frontmatter.date.toISOString()}>
+                    {formattedDate}
+                  </time>
+                </div>
+              </a>
             </li>
           );
         })

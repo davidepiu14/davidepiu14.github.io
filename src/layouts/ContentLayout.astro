@@ -46,16 +46,11 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
   >
     <Header />
     <main id="main">
-      <section class="blog-post prose max-w-none prose-bubblegum">
-        <h1 class="m-0 mb-[0.25em]">
-          <span class="
-              pl-6 relative block leading-[150%]
-              after:absolute after:content-[''] after:w-2 after:h-full after:top-0 after:left-0 after:bg-primary-green
-            ">
-            {title}
-          </span>
+      <section class="blog-post prose max-w-none prose-bubblegum brut-card mt-6">
+        <h1 class="m-0 mb-2 text-3xl md:text-4xl font-extrabold tracking-tight">
+          {title}
         </h1>
-        <time class="block mb-[2em] text-text-muted">{formattedDate}</time>
+        <time class="block mb-6 text-sm text-text-muted">{formattedDate}</time>
         <slot name="content" />
       </section>
     </main>

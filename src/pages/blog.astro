@@ -21,8 +21,8 @@ const sortedPosts = posts
 
 <PageLayout>
   <PageMeta title={`Blog | ${SITE_TITLE}`} slot="meta" />
-  <section slot="main">
-    <ul>
+  <section slot="main" class="mt-6 space-y-6">
+    <ul class="unset space-y-6">
       {
         sortedPosts.map((post) => {
           const formattedDate = new Date(
@@ -32,44 +32,36 @@ const sortedPosts = posts
             month: "short",
             day: "numeric",
           });
+          const isExternal = post.frontmatter.external;
+          const href = isExternal ? post.frontmatter.url : `/blog/${post.slug}`;
           return (
-            <li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
-              <div class="title">
-                {post.frontmatter.external ? (
-                  <a
-                    href={post.frontmatter.url}
-                    target="_blank"
-                    class="unset
-                        transition-[background-size] duration-300 
-                        bg-gradient-to-r bg-left-bottom bg-no-repeat
-                        bg-[length:0%_55%] hover:bg-[length:100%_55%] dark:bg-[length:0%_2px] hover:dark:bg-[length:100%_2px]
-                        from-primary-blue to-primary-blue dark:from-primary-blue dark:to-primary-blue
-                      "
-                  >
-                    <span>{post.frontmatter.title}</span>
-                    <span>
-                      <i class="ml-1 mr-1 text-[12px] pb-2 fa-solid fa-up-right-from-square" />
+            <li>
+              <a
+                href={href}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noreferrer" : undefined}
+                class="unset block brut-card hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[6px_6px_0_rgba(15,23,42,1)] transition-transform duration-150"
+              >
+                <h2 class="text-xl md:text-2xl font-bold mb-2">
+                  {post.frontmatter.title}
+                  {isExternal && (
+                    <span class="ml-2 text-xs uppercase tracking-wide align-middle">
+                      <i class="fa-solid fa-up-right-from-square mr-1" />
+                      External
                     </span>
-                  </a>
-                ) : (
-                  <a
-                    href={`/blog/${post.slug}`}
-                    class="unset
-                        transition-[background-size] duration-300 
-                        bg-gradient-to-r bg-left-bottom bg-no-repeat
-                        bg-[length:0%_55%] hover:bg-[length:100%_55%] dark:bg-[length:0%_2px] hover:dark:bg-[length:100%_2px]
-                        from-primary-blue to-primary-blue dark:from-primary-blue dark:to-primary-blue
-                      "
-                  >
-                    {post.frontmatter.title}
-                  </a>
+                  )}
+                </h2>
+                {post.frontmatter.description && (
+                  <p class="text-sm md:text-base text-text-muted mb-3">
+                    {post.frontmatter.description}
+                  </p>
                 )}
-              </div>
-              <div class="text-text-muted text-sm italic pt-1">
-                <time datetime={post.frontmatter.date.toISOString()}>
-                  {formattedDate}
-                </time>
-              </div>
+                <div class="flex items-center justify-between text-xs md:text-sm text-text-muted">
+                  <time datetime={post.frontmatter.date.toISOString()}>
+                    {formattedDate}
+                  </time>
+                </div>
+              </a>
             </li>
           );
         })

@@ -10,74 +10,58 @@
 */
 @layer base {
 
-    /* light theme */
+    /* light theme - neo-brutalist */
     .theme-bubblegum {
-        /* Custom #8AE6FB */
-        --color-primary-blue: 138 230 251;
-        /* Tailwind lime-300 #bef264 */
-        --color-primary-green: 190 242 100;
-        /* Custom #FFDE69 */
-        --color-primary-yellow: 255 222 105;
+        /* Bold flat accents */
+        --color-primary-blue: 37 99 235;
+        --color-primary-green: 251 191 36;
+        --color-primary-yellow: 251 191 36;
 
-        /* Custom #3e3355 */
-        --color-text-body: 62 51 85;
-        /* Custom #3e3355 */
-        --color-text-heading: 62 51 85;
-        /* Custom #3e3355 */
-        --color-text-bold: 62 51 85;
-        /* Tailwind slate-500 #64748b */
-        --color-text-muted: 100 116 139;
-        /* Tailwind cyan-500 #06b6d4 */
-        --color-text-link: 6 182 212;
-        /* black */
-        --color-text-code: 0 0 0;
-        /* black */
-        --color-text-selection: 0 0 0;
+        /* Text on light bg */
+        --color-text-body: 24 24 27;
+        --color-text-heading: 15 23 42;
+        --color-text-bold: 15 23 42;
+        --color-text-muted: 113 113 122;
+        /* Accent color for links */
+        --color-text-link: 37 99 235;
+        /* Code text */
+        --color-text-code: 23 37 84;
+        /* Selection text */
+        --color-text-selection: 24 24 27;
 
-        /* white */
-        --color-bg-body: 255 255 255;
-        /* tailwind amber-100 #fef3c7 */
-        --color-bg-code: 254 243 199;
-        /* tailwind lime-200 #d9f99d */
-        --color-bg-selection: 217 249 157;
+        /* Light background */
+        --color-bg-body: 250 250 249;
+        /* Code background */
+        --color-bg-code: 255 237 213;
+        /* Selection */
+        --color-bg-selection: 254 240 138;
 
-        /* tailwind orange-100 #ffedd5 */
-        --color-border-code: 255 237 213;
+        /* Code border */
+        --color-border-code: 15 23 42;
     }
 
-    /* dark theme */
+    /* dark theme - inverted neo-brutalist */
     .theme-bubblegum.dark {
-        /* Tailwind blue-500 #3b82f6 */
-        --color-primary-blue: 59 130 246;
-        /* Tailwind lime-300 #bef264 */
-        --color-primary-green: 190 242 100;
-        /* Custom #FFDE69 */
-        --color-primary-yellow: 255 222 105;
+        --color-primary-blue: 96 165 250;
+        --color-primary-green: 252 211 77;
+        --color-primary-yellow: 252 211 77;
 
-        /* tailwind slate-300 */
-        --color-text-body: 203 213 225;
-        /* white */
-        --color-text-heading: 255 255 255;
-        /* white */
-        --color-text-bold: 255 255 255;
-        /* tailwind slate-400 #94a3b8 */
-        --color-text-muted: 148 163 184;
-        /* Tailwind blue-400 #60a5fa */
+        /* Text */
+        --color-text-body: 228 228 231;
+        --color-text-heading: 250 250 250;
+        --color-text-bold: 250 250 250;
+        --color-text-muted: 161 161 170;
         --color-text-link: 96 165 250;
-        /* black */
-        --color-text-code: 255 255 255;
-        /* black */
+        --color-text-code: 252 211 77;
         --color-text-selection: 0 0 0;
 
-        /* Tailwind slate-900 #0f172a */
-        --color-bg-body: 15 23 42;
-        /* Tailwind sky-500 #0ea5e9 */
-        --color-bg-code: 14 165 233;
-        /* Tailwind lime-200 #d9f99d */
-        --color-bg-selection: 217 249 157;
+        /* Backgrounds */
+        --color-bg-body: 24 24 27;
+        --color-bg-code: 30 64 175;
+        --color-bg-selection: 252 211 77;
 
-        /* Tailwind yellow-100 #fef9c3 */
-        --color-border-code: 254 243 199;
+        /* Code border */
+        --color-border-code: 250 250 250;
     }
 
     :root {
@@ -118,16 +102,15 @@
         just add a class `unset` to it. 
     */
     a:not(.unset) {
+        color: theme('colors.text.heading');
         text-decoration: none;
-        background-repeat: no-repeat;
-        background-size: 100% 1.5px;
-        background-position: 0 100%;
-        background-image:
-            linear-gradient(to right, theme('colors.text.link'), theme('colors.text.link'));
+        border-bottom: 3px solid theme('colors.text.link');
+        padding-bottom: 1px;
     }
 
     a:not(.unset):hover {
-        color: theme('colors.text.link');
+        background-color: theme('colors.text.link');
+        color: white;
     }
 
     code:not(pre code):not(.unset) {
@@ -147,34 +130,18 @@
     }
 
     ul:not(.unset):not(:where([class~="prose"] *)) {
-        padding-left: 0;
-        list-style: none;
-    }
-
-    ul:not(:where([class~="prose"] *))>li {
-        position: relative;
-        padding-left: 1.375rem;
-    }
-
-    ul:not(.unset):not(:where([class~="prose"] *))>li::before {
-        position: absolute;
-        left: 0;
-        content: "»";
-        color: rgb(var(--color-text-muted));
-    }
-
-    ol:not(.unset):not(:where([class~="prose"] *)) {
-        padding-left: 1.125rem;
-    }
-
-    ol:not(.unset):not(:where([class~="prose"] *))>li::marker {
-        color: rgb(var(--color-text-muted))
+        padding-left: 1.25rem;
+        list-style: square;
     }
 
     ul:not(.unset):not(:where([class~="prose"] *))>li,
     ol:not(.unset):not(:where([class~="prose"] *))>li {
         margin-top: 0.5em;
         margin-bottom: 0.5em;
+    }
+
+    ol:not(.unset):not(:where([class~="prose"] *)) {
+        padding-left: 1.25rem;
     }
 
     ::selection {
@@ -185,6 +152,27 @@
     /* ------ GLOBAL STYLES - END ------ */
 
     /* ------ REUSABLE UTILS - START ------ */
+    .brut-card {
+        border-radius: 0.75rem;
+        border: 3px solid theme('colors.text.heading');
+        background-color: theme('colors.bg.body');
+        box-shadow: 8px 8px 0 theme('colors.text.heading');
+        padding: 1.75rem 1.5rem;
+    }
+    .brut-pill {
+        border-radius: 0.375rem;
+        border: 2px solid theme('colors.text.heading');
+        background-color: theme('colors.bg.body');
+        color: theme('colors.text.heading');
+        padding: 0.25rem 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.7rem;
+    }
+    .brut-pill--accent {
+        background-color: theme('colors.primary.yellow');
+        border-color: theme('colors.text.heading');
+    }
     .animated-link {
         position: relative;
         box-decoration-break: clone;

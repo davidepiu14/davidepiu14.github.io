@@ -5,8 +5,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        body: ["Space Grotesk", "sans-serif"],
-        heading: ["Space Grotesk", "sans-serif"],
+        body: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+        heading: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
       },
       colors: {
         transparent: "transparent",
@@ -38,14 +38,10 @@ module.exports = {
         DEFAULT: {
           css: {
             a: {
-              "text-decoration": "none",
-              "background-repeat": "no-repeat",
-              "background-size": "100% 1.5px",
-              "background-position": "0 100%",
-              "background-image":
-                "linear-gradient(to right, rgb(var(--color-text-link)/1), rgb(var(--color-text-link)/1))",
+              "text-decoration": "underline",
+              "text-underline-offset": "2px",
               "&:hover": {
-                color: "rgb(var(--color-text-link))",
+                "text-decoration-thickness": "2px",
               },
             },
             "h1, h2, h3, h4, h5": {
@@ -58,27 +54,16 @@ module.exports = {
               content: "none",
             },
             blockquote: {
-              border: "none",
-              position: "relative",
-              width: "96%",
-              margin: "0 auto",
-              "font-size": "1.0625em",
-              "padding-top": "1.5rem",
-              "padding-bottom": "0.5rem",
-              "padding-left": "1.5rem",
-              "padding-right": "1.5rem",
+              borderLeft: `2px solid ${theme("colors.text.muted")}`,
+              paddingLeft: "1rem",
+              marginLeft: "0",
+              marginRight: "0",
             },
             "blockquote::before": {
-              "font-family": "Arial",
-              content: "'“'",
-              "font-size": "4em",
-              color: "rgb(var(--color-text-bold))",
-              position: "absolute",
-              left: "-10px",
-              top: "-10px",
+              content: "none",
             },
             "blockquote::after": {
-              content: "",
+              content: "none",
             },
             "blockquote p:first-of-type::before": {
               content: "",
